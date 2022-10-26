@@ -1,0 +1,1929 @@
+{
+    "resourceType": "StructureDefinition",
+    "id": "CareConnect-ITK-DM-DMIRS-Composition-1",
+    "meta": {
+        "lastUpdated": "2018-10-04T11:58:11.316+01:00"
+    },
+    "url": "https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-ITK-DM-DMIRS-Composition-1",
+    "version": "1.0.0",
+    "name": "CareConnect-ITK-DM-DMIRS-Composition-1",
+    "status": "draft",
+    "date": "2019-08-15",
+    "publisher": "NHS Digital",
+    "contact": [
+        {
+            "name": "Interoperability Team",
+            "telecom": [
+                {
+                    "system": "email",
+                    "value": "interoperabilityteam@nhs.net",
+                    "use": "work"
+                }
+            ]
+        }
+    ],
+    "description": "A set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement.",
+    "purpose": "This constrained composition resource represents the Digital Medicines Emergency Supply Document Header Composition.",
+    "copyright": "Copyright © 2019 NHS Digital",
+    "fhirVersion": "3.0.1",
+    "kind": "resource",
+    "abstract": false,
+    "type": "Composition",
+    "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Composition",
+    "derivation": "constraint",
+    "differential": {
+        "element": [
+            {
+                "id": "Composition.extension",
+                "path": "Composition.extension",
+                "slicing": {
+                    "discriminator": [
+                        {
+                            "type": "value",
+                            "path": "url"
+                        }
+                    ],
+                    "rules": "open"
+                }
+            },
+            {
+                "id": "Composition.extension:careSettingTypeExtension",
+                "path": "Composition.extension",
+                "sliceName": "careSettingTypeExtension",
+                "min": 1,
+                "max": "1",
+                "type": [
+                    {
+                        "code": "Extension",
+                        "profile": "https://fhir.nhs.uk/STU3/StructureDefinition/Extension-CareSettingType-1"
+                    }
+                ]
+            },
+            {
+                "id": "Composition.identifier",
+                "path": "Composition.identifier",
+                "min": 1
+            },
+            {
+                "id": "Composition.identifier.use",
+                "path": "Composition.identifier.use",
+                "max": "0"
+            },
+            {
+                "id": "Composition.identifier.type",
+                "path": "Composition.identifier.type",
+                "max": "0"
+            },
+            {
+                "id": "Composition.identifier.system",
+                "path": "Composition.identifier.system",
+                "min": 1
+            },
+            {
+                "id": "Composition.identifier.value",
+                "path": "Composition.identifier.value",
+                "short": "Contains a UUID",
+                "min": 1
+            },
+            {
+                "id": "Composition.identifier.period",
+                "path": "Composition.identifier.period",
+                "max": "0"
+            },
+            {
+                "id": "Composition.identifier.assigner",
+                "path": "Composition.identifier.assigner",
+                "max": "0",
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1"
+                    }
+                ]
+            },
+            {
+                "id": "Composition.type",
+                "path": "Composition.type",
+                "short": "Kind of composition",
+                "binding": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+                            "valueString": "DocumentType"
+                        }
+                    ],
+                    "strength": "preferred",
+                    "description": "A set of codes to classify the type of document.",
+                    "valueSetReference": {
+                        "reference": "https://fhir.nhs.uk/STU3/ValueSet/DocumentType-1"
+                    }
+                }
+            },
+            {
+                "id": "Composition.type.coding.system",
+                "path": "Composition.type.coding.system",
+                "min": 1
+            },
+            {
+                "id": "Composition.type.coding.version",
+                "path": "Composition.type.coding.version",
+                "max": "0"
+            },
+            {
+                "id": "Composition.type.coding.code",
+                "path": "Composition.type.coding.code",
+                "min": 1
+            },
+            {
+                "id": "Composition.type.coding.display",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.type.coding.display",
+                "min": 1
+            },
+            {
+                "id": "Composition.type.coding.userSelected",
+                "path": "Composition.type.coding.userSelected",
+                "max": "0"
+            },
+            {
+                "id": "Composition.class.coding.system",
+                "path": "Composition.class.coding.system",
+                "min": 1
+            },
+            {
+                "id": "Composition.class.coding.version",
+                "path": "Composition.class.coding.version",
+                "max": "0"
+            },
+            {
+                "id": "Composition.class.coding.code",
+                "path": "Composition.class.coding.code",
+                "min": 1
+            },
+            {
+                "id": "Composition.class.coding.display",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.class.coding.display",
+                "min": 1
+            },
+            {
+                "id": "Composition.class.coding.userSelected",
+                "path": "Composition.class.coding.userSelected",
+                "max": "0"
+            },
+            {
+                "id": "Composition.subject",
+                "path": "Composition.subject",
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1"
+                    }
+                ]
+            },
+            {
+                "id": "Composition.subject.reference",
+                "path": "Composition.subject.reference",
+                "min": 1
+            },
+            {
+                "id": "Composition.encounter",
+                "path": "Composition.encounter",
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-ITK-Encounter-1"
+                    }
+                ],
+                "mustSupport": true
+            },
+            {
+                "id": "Composition.encounter.reference",
+                "path": "Composition.encounter.reference",
+                "min": 1
+            },
+            {
+                "id": "Composition.author",
+                "path": "Composition.author",
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Practitioner-1"
+                    },
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.nhs.uk/STU3/StructureDefinition/ITK-Device-1"
+                    }
+                ]
+            },
+            {
+                "id": "Composition.author.reference",
+                "path": "Composition.author.reference",
+                "min": 1
+            },
+            {
+                "id": "Composition.confidentiality",
+                "path": "Composition.confidentiality",
+                "max": "0"
+            },
+            {
+                "id": "Composition.attester",
+                "path": "Composition.attester",
+                "max": "0"
+            },
+            {
+                "id": "Composition.attester.party",
+                "path": "Composition.attester.party",
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1"
+                    },
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Practitioner-1"
+                    },
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1"
+                    }
+                ]
+            },
+            {
+                "id": "Composition.custodian",
+                "path": "Composition.custodian",
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1"
+                    }
+                ],
+                "mustSupport": true
+            },
+            {
+                "id": "Composition.custodian.reference",
+                "path": "Composition.custodian.reference",
+                "min": 1
+            },
+            {
+                "id": "Composition.relatesTo",
+                "path": "Composition.relatesTo",
+                "max": "1"
+            },
+            {
+                "id": "Composition.relatesTo.code",
+                "path": "Composition.relatesTo.code",
+                "fixedCode": "replaces"
+            },
+            {
+                "id": "Composition.relatesTo.target[x]",
+                "path": "Composition.relatesTo.target[x]",
+                "type": [
+                    {
+                        "code": "Identifier"
+                    },
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-ITK-DM-Immunization-Composition-1"
+                    }
+                ]
+            },
+            {
+                "id": "Composition.event",
+                "path": "Composition.event",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name",
+                        "valueString": "Section"
+                    }
+                ],
+                "path": "Composition.section",
+                "slicing": {
+                    "discriminator": [
+                        {
+                            "type": "value",
+                            "path": "code.coding.code"
+                        }
+                    ],
+                    "ordered": false,
+                    "rules": "open"
+                },
+                "min": 1
+            },
+            {
+                "id": "Composition.section.code",
+                "path": "Composition.section.code",
+                "binding": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+                            "valueString": "CompositionSectionType"
+                        }
+                    ],
+                    "strength": "preferred",
+                    "valueSetReference": {
+                        "reference": "https://fhir.hl7.org.uk/STU3/ValueSet/CareConnect-CompositionSectionCode-1"
+                    }
+                }
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name",
+                        "valueString": "Section"
+                    }
+                ],
+                "path": "Composition.section",
+                "sliceName": "allergiesAndAdverseReactions",
+                "short": "Summarised table of Allergies and Intolerance relating to the patient.",
+                "definition": "Summarised table of Allergies and Intolerance relating to the patient.",
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions.title",
+                "path": "Composition.section.title",
+                "short": "Allergies and Adverse Reactions",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions.code",
+                "path": "Composition.section.code",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions.code.coding",
+                "path": "Composition.section.code.coding",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions.code.coding.system",
+                "path": "Composition.section.code.coding.system",
+                "min": 1,
+                "fixedUri": "http://snomed.info/sct"
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions.code.coding.version",
+                "path": "Composition.section.code.coding.version",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions.code.coding.code",
+                "path": "Composition.section.code.coding.code",
+                "min": 1,
+                "fixedCode": "886921000000105"
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions.code.coding.display",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.coding.display",
+                "min": 1,
+                "fixedString": "Allergies and adverse reactions"
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions.code.coding.userSelected",
+                "path": "Composition.section.code.coding.userSelected",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions.code.text",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.text",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions.text",
+                "path": "Composition.section.text",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions.mode",
+                "path": "Composition.section.mode",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions.orderedBy",
+                "path": "Composition.section.orderedBy",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions.entry",
+                "path": "Composition.section.entry",
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-ITK-Allergy-List-1"
+                    },
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.nhs.uk/STU3/StructureDefinition/ITK-Attachment-Binary-1"
+                    }
+                ]
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions.entry.reference",
+                "path": "Composition.section.entry.reference",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions.emptyReason",
+                "path": "Composition.section.emptyReason",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:allergiesAndAdverseReactions.section",
+                "path": "Composition.section.section",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:attendanceDetails",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name",
+                        "valueString": "Section"
+                    }
+                ],
+                "path": "Composition.section",
+                "sliceName": "attendanceDetails",
+                "short": "Information relating to the patients attendance.",
+                "definition": "Information relating to the patients attendance.",
+                "max": "1",
+                "mustSupport": true
+            },
+            {
+                "id": "Composition.section:attendanceDetails.title",
+                "path": "Composition.section.title",
+                "min": 1,
+                "fixedString": "Attendance Details"
+            },
+            {
+                "id": "Composition.section:attendanceDetails.code",
+                "path": "Composition.section.code",
+                "min": 1,
+                "binding": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+                            "valueString": "CompositionSectionType"
+                        }
+                    ],
+                    "strength": "required",
+                    "description": "A code from the SNOMED Clinical Terminology UK coding system which represents the type of section.",
+                    "valueSetUri": "http://snomed.info/sct"
+                }
+            },
+            {
+                "id": "Composition.section:attendanceDetails.code.coding",
+                "path": "Composition.section.code.coding",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:attendanceDetails.code.coding.system",
+                "path": "Composition.section.code.coding.system",
+                "min": 1,
+                "fixedUri": "http://snomed.info/sct"
+            },
+            {
+                "id": "Composition.section:attendanceDetails.code.coding.version",
+                "path": "Composition.section.code.coding.version",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:attendanceDetails.code.coding.code",
+                "path": "Composition.section.code.coding.code",
+                "min": 1,
+                "fixedCode": "1077881000000105"
+            },
+            {
+                "id": "Composition.section:attendanceDetails.code.coding.display",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.coding.display",
+                "min": 1,
+                "fixedString": "Attendance details"
+            },
+            {
+                "id": "Composition.section:attendanceDetails.code.coding.userSelected",
+                "path": "Composition.section.code.coding.userSelected",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:attendanceDetails.code.text",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.text",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:attendanceDetails.text",
+                "path": "Composition.section.text",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:attendanceDetails.mode",
+                "path": "Composition.section.mode",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:attendanceDetails.orderedBy",
+                "path": "Composition.section.orderedBy",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:attendanceDetails.entry",
+                "path": "Composition.section.entry",
+                "min": 1,
+                "max": "1",
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-ITK-Encounter-1"
+                    }
+                ]
+            },
+            {
+                "id": "Composition.section:attendanceDetails.entry.reference",
+                "path": "Composition.section.entry.reference",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:attendanceDetails.emptyReason",
+                "path": "Composition.section.emptyReason",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:attendanceDetails.section",
+                "path": "Composition.section.section",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:clinicalNarrative",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name",
+                        "valueString": "Section"
+                    }
+                ],
+                "path": "Composition.section",
+                "sliceName": "clinicalNarrative",
+                "short": "A description detailing a patient’s reason for attendance",
+                "definition": "A description detailing a patient’s reason for attendance.",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:clinicalNarrative.title",
+                "path": "Composition.section.title",
+                "min": 1,
+                "fixedString": "Clinical narrative"
+            },
+            {
+                "id": "Composition.section:clinicalNarrative.code",
+                "path": "Composition.section.code",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:clinicalNarrative.code.coding",
+                "path": "Composition.section.code.coding",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:clinicalNarrative.code.coding.system",
+                "path": "Composition.section.code.coding.system",
+                "min": 1,
+                "fixedUri": "http://snomed.info/sct"
+            },
+            {
+                "id": "Composition.section:clinicalNarrative.code.coding.version",
+                "path": "Composition.section.code.coding.version",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:clinicalNarrative.code.coding.code",
+                "path": "Composition.section.code.coding.code",
+                "min": 1,
+                "fixedCode": "1077901000000108"
+            },
+            {
+                "id": "Composition.section:clinicalNarrative.code.coding.display",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.coding.display",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:clinicalNarrative.code.coding.userSelected",
+                "path": "Composition.section.code.coding.userSelected",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:clinicalNarrative.code.text",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.text",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:clinicalNarrative.text",
+                "path": "Composition.section.text",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:clinicalNarrative.mode",
+                "path": "Composition.section.mode",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:clinicalNarrative.orderedBy",
+                "path": "Composition.section.orderedBy",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:clinicalNarrative.entry",
+                "path": "Composition.section.entry",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:clinicalNarrative.emptyReason",
+                "path": "Composition.section.emptyReason",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:clinicalNarrative.section",
+                "path": "Composition.section.section",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:consent",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name",
+                        "valueString": "Section"
+                    }
+                ],
+                "path": "Composition.section",
+                "sliceName": "consent",
+                "short": "Information on patients consent for treatment and information sharing guidance.",
+                "definition": "Information on patients consent for treatment and information sharing guidance.",
+                "max": "1",
+                "mustSupport": true
+            },
+            {
+                "id": "Composition.section:consent.title",
+                "path": "Composition.section.title",
+                "min": 1,
+                "fixedString": "Consent"
+            },
+            {
+                "id": "Composition.section:consent.code",
+                "path": "Composition.section.code",
+                "min": 1,
+                "binding": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+                            "valueString": "CompositionSectionType"
+                        }
+                    ],
+                    "strength": "required",
+                    "description": "A code from the SNOMED Clinical Terminology UK coding system which represents the type of section.",
+                    "valueSetUri": "http://snomed.info/sct"
+                }
+            },
+            {
+                "id": "Composition.section:consent.code.coding",
+                "path": "Composition.section.code.coding",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:consent.code.coding.system",
+                "path": "Composition.section.code.coding.system",
+                "min": 1,
+                "fixedUri": "http://snomed.info/sct"
+            },
+            {
+                "id": "Composition.section:consent.code.coding.version",
+                "path": "Composition.section.code.coding.version",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:consent.code.coding.code",
+                "path": "Composition.section.code.coding.code",
+                "min": 1,
+                "fixedCode": "61861000000100"
+            },
+            {
+                "id": "Composition.section:consent.code.coding.display",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.coding.display",
+                "min": 1,
+                "fixedString": "Consent"
+            },
+            {
+                "id": "Composition.section:consent.code.coding.userSelected",
+                "path": "Composition.section.code.coding.userSelected",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:consent.code.text",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.text",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:consent.text",
+                "path": "Composition.section.text",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:consent.mode",
+                "path": "Composition.section.mode",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:consent.orderedBy",
+                "path": "Composition.section.orderedBy",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:consent.entry",
+                "path": "Composition.section.entry",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:consent.emptyReason",
+                "path": "Composition.section.emptyReason",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:consent.section",
+                "path": "Composition.section.section",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:distributionList",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name",
+                        "valueString": "Section"
+                    }
+                ],
+                "path": "Composition.section",
+                "sliceName": "distributionList",
+                "max": "1",
+                "mustSupport": true
+            },
+            {
+                "id": "Composition.section:distributionList.title",
+                "path": "Composition.section.title",
+                "min": 1,
+                "fixedString": "Distribution list"
+            },
+            {
+                "id": "Composition.section:distributionList.code",
+                "path": "Composition.section.code",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:distributionList.code.coding",
+                "path": "Composition.section.code.coding",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:distributionList.code.coding.system",
+                "path": "Composition.section.code.coding.system",
+                "min": 1,
+                "fixedUri": "http://snomed.info/sct"
+            },
+            {
+                "id": "Composition.section:distributionList.code.coding.version",
+                "path": "Composition.section.code.coding.version",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:distributionList.code.coding.code",
+                "path": "Composition.section.code.coding.code",
+                "min": 1,
+                "fixedCode": "887261000000109"
+            },
+            {
+                "id": "Composition.section:distributionList.code.coding.display",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.coding.display",
+                "min": 1,
+                "fixedString": "Distribution list"
+            },
+            {
+                "id": "Composition.section:distributionList.code.coding.userSelected",
+                "path": "Composition.section.code.coding.userSelected",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:distributionList.code.text",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.text",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:distributionList.text",
+                "path": "Composition.section.text",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:distributionList.mode",
+                "path": "Composition.section.mode",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:distributionList.orderedBy",
+                "path": "Composition.section.orderedBy",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:distributionList.entry",
+                "path": "Composition.section.entry",
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1"
+                    },
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Practitioner-1"
+                    },
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1"
+                    },
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.nhs.uk/STU3/StructureDefinition/ITK-RelatedPerson-1"
+                    },
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.nhs.uk/STU3/StructureDefinition/ITK-Attachment-Binary-1"
+                    },
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-PractitionerRole-1"
+                    },
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-RelatedPerson-1"
+                    }
+                ]
+            },
+            {
+                "id": "Composition.section:distributionList.entry.reference",
+                "path": "Composition.section.entry.reference",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:distributionList.emptyReason",
+                "path": "Composition.section.emptyReason",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:distributionList.section",
+                "path": "Composition.section.section",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:gpPractice",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name",
+                        "valueString": "Section"
+                    }
+                ],
+                "path": "Composition.section",
+                "sliceName": "gpPractice",
+                "short": "Information realting to the patients registered GP Practice.",
+                "definition": "Information realting to the patients registered GP Practice.",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:gpPractice.title",
+                "path": "Composition.section.title",
+                "min": 1,
+                "fixedString": "GP Practice"
+            },
+            {
+                "id": "Composition.section:gpPractice.code",
+                "path": "Composition.section.code",
+                "min": 1,
+                "binding": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+                            "valueString": "CompositionSectionType"
+                        }
+                    ],
+                    "strength": "required",
+                    "description": "A code from the SNOMED Clinical Terminology UK coding system which represents the type of section.",
+                    "valueSetUri": "http://snomed.info/sct"
+                }
+            },
+            {
+                "id": "Composition.section:gpPractice.code.coding",
+                "path": "Composition.section.code.coding",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:gpPractice.code.coding.system",
+                "path": "Composition.section.code.coding.system",
+                "min": 1,
+                "fixedUri": "http://snomed.info/sct"
+            },
+            {
+                "id": "Composition.section:gpPractice.code.coding.version",
+                "path": "Composition.section.code.coding.version",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:gpPractice.code.coding.code",
+                "path": "Composition.section.code.coding.code",
+                "min": 1,
+                "fixedCode": "886711000000101"
+            },
+            {
+                "id": "Composition.section:gpPractice.code.coding.display",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.coding.display",
+                "min": 1,
+                "fixedString": "GP practice"
+            },
+            {
+                "id": "Composition.section:gpPractice.code.coding.userSelected",
+                "path": "Composition.section.code.coding.userSelected",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:gpPractice.code.text",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.text",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:gpPractice.text",
+                "path": "Composition.section.text",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:gpPractice.mode",
+                "path": "Composition.section.mode",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:gpPractice.orderedBy",
+                "path": "Composition.section.orderedBy",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:gpPractice.entry",
+                "path": "Composition.section.entry",
+                "min": 1,
+                "max": "1",
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1"
+                    }
+                ]
+            },
+            {
+                "id": "Composition.section:gpPractice.entry.reference",
+                "path": "Composition.section.entry.reference",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:gpPractice.emptyReason",
+                "path": "Composition.section.emptyReason",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:gpPractice.section",
+                "path": "Composition.section.section",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:history",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name",
+                        "valueString": "Section"
+                    }
+                ],
+                "path": "Composition.section",
+                "sliceName": "history",
+                "short": "Relevant past medical, surgical and mental health history.",
+                "definition": "History pertinent to the vaccination e.g. contraindications, pregnancy, immunosupression etc. ",
+                "max": "1",
+                "mustSupport": true
+            },
+            {
+                "id": "Composition.section:history.title",
+                "path": "Composition.section.title",
+                "min": 1,
+                "fixedString": "History"
+            },
+            {
+                "id": "Composition.section:history.code",
+                "path": "Composition.section.code",
+                "min": 1,
+                "binding": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+                            "valueString": "CompositionSectionType"
+                        }
+                    ],
+                    "strength": "required",
+                    "description": "A code from the SNOMED Clinical Terminology UK coding system which represents the type of section.",
+                    "valueSetUri": "http://snomed.info/sct"
+                }
+            },
+            {
+                "id": "Composition.section:history.code.coding",
+                "path": "Composition.section.code.coding",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:history.code.coding.system",
+                "path": "Composition.section.code.coding.system",
+                "min": 1,
+                "fixedUri": "http://snomed.info/sct"
+            },
+            {
+                "id": "Composition.section:history.code.coding.version",
+                "path": "Composition.section.code.coding.version",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:history.code.coding.code",
+                "path": "Composition.section.code.coding.code",
+                "min": 1,
+                "fixedCode": "717121000000105"
+            },
+            {
+                "id": "Composition.section:history.code.coding.display",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.coding.display",
+                "min": 1,
+                "fixedString": "History"
+            },
+            {
+                "id": "Composition.section:history.code.coding.userSelected",
+                "path": "Composition.section.code.coding.userSelected",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:history.code.text",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.text",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:history.text",
+                "path": "Composition.section.text",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:history.mode",
+                "path": "Composition.section.mode",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:history.orderedBy",
+                "path": "Composition.section.orderedBy",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:history.entry",
+                "path": "Composition.section.entry",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:history.emptyReason",
+                "path": "Composition.section.emptyReason",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:history.section",
+                "path": "Composition.section.section",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:informationAndAdviceGiven",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name",
+                        "valueString": "Section"
+                    }
+                ],
+                "path": "Composition.section",
+                "sliceName": "informationAndAdviceGiven",
+                "short": "Information or advice given.",
+                "definition": "The oral or written information or advice given to the patient, carer, other authorised representative, care professional or other third party.",
+                "max": "1",
+                "mustSupport": true
+            },
+            {
+                "id": "Composition.section:informationAndAdviceGiven.title",
+                "path": "Composition.section.title",
+                "min": 1,
+                "fixedString": "Information and Advice given"
+            },
+            {
+                "id": "Composition.section:informationAndAdviceGiven.code",
+                "path": "Composition.section.code",
+                "min": 1,
+                "binding": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+                            "valueString": "CompositionSectionType"
+                        }
+                    ],
+                    "strength": "required",
+                    "description": "A code from the SNOMED Clinical Terminology UK coding system which represents the type of section.",
+                    "valueSetUri": "http://snomed.info/sct"
+                }
+            },
+            {
+                "id": "Composition.section:informationAndAdviceGiven.code.coding",
+                "path": "Composition.section.code.coding",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:informationAndAdviceGiven.code.coding.system",
+                "path": "Composition.section.code.coding.system",
+                "min": 1,
+                "fixedUri": "http://snomed.info/sct"
+            },
+            {
+                "id": "Composition.section:informationAndAdviceGiven.code.coding.version",
+                "path": "Composition.section.code.coding.version",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:informationAndAdviceGiven.code.coding.code",
+                "path": "Composition.section.code.coding.code",
+                "min": 1,
+                "fixedCode": "1052951000000105"
+            },
+            {
+                "id": "Composition.section:informationAndAdviceGiven.code.coding.display",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.coding.display",
+                "min": 1,
+                "fixedString": "Information and advice given"
+            },
+            {
+                "id": "Composition.section:informationAndAdviceGiven.code.coding.userSelected",
+                "path": "Composition.section.code.coding.userSelected",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:informationAndAdviceGiven.code.text",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.text",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:informationAndAdviceGiven.text",
+                "path": "Composition.section.text",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:informationAndAdviceGiven.mode",
+                "path": "Composition.section.mode",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:informationAndAdviceGiven.orderedBy",
+                "path": "Composition.section.orderedBy",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:informationAndAdviceGiven.entry",
+                "path": "Composition.section.entry",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:informationAndAdviceGiven.emptyReason",
+                "path": "Composition.section.emptyReason",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:informationAndAdviceGiven.section",
+                "path": "Composition.section.section",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name",
+                        "valueString": "Section"
+                    }
+                ],
+                "path": "Composition.section",
+                "sliceName": "medicationsAndMedicalDevices",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices.title",
+                "path": "Composition.section.title",
+                "min": 1,
+                "fixedString": "Medications and medical devices"
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices.code",
+                "path": "Composition.section.code",
+                "min": 1,
+                "binding": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+                            "valueString": "CompositionSectionType"
+                        }
+                    ],
+                    "strength": "required",
+                    "description": "A code from the SNOMED Clinical Terminology UK coding system which represents the type of section.",
+                    "valueSetUri": "http://snomed.info/sct"
+                }
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices.code.coding",
+                "path": "Composition.section.code.coding",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices.code.coding.system",
+                "path": "Composition.section.code.coding.system",
+                "min": 1,
+                "fixedUri": "http://snomed.info/sct"
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices.code.coding.version",
+                "path": "Composition.section.code.coding.version",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices.code.coding.code",
+                "path": "Composition.section.code.coding.code",
+                "min": 1,
+                "fixedCode": "933361000000108"
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices.code.coding.display",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.coding.display",
+                "min": 1,
+                "fixedString": "Medications and medical devices"
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices.code.coding.userSelected",
+                "path": "Composition.section.code.coding.userSelected",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices.code.text",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.text",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices.text",
+                "path": "Composition.section.text",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices.mode",
+                "path": "Composition.section.mode",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices.orderedBy",
+                "path": "Composition.section.orderedBy",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices.entry",
+                "path": "Composition.section.entry",
+                "min": 1,
+                "max": "1",
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-ITK-MedicationDispense-List-1"
+                    }
+                ]
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices.entry.reference",
+                "path": "Composition.section.entry.reference",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices.emptyReason",
+                "path": "Composition.section.emptyReason",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:medicationsAndMedicalDevices.section",
+                "path": "Composition.section.section",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:patientDemographics",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name",
+                        "valueString": "Section"
+                    }
+                ],
+                "path": "Composition.section",
+                "sliceName": "patientDemographics",
+                "short": "Patient demographic information including the patient's next of kin and carer information.",
+                "definition": "Patient demographic information including the patient's next of kin and carer information.",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:patientDemographics.title",
+                "path": "Composition.section.title",
+                "min": 1,
+                "fixedString": "Patient Demographics"
+            },
+            {
+                "id": "Composition.section:patientDemographics.code",
+                "path": "Composition.section.code",
+                "min": 1,
+                "binding": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+                            "valueString": "CompositionSectionType"
+                        }
+                    ],
+                    "strength": "required",
+                    "description": "A code from the SNOMED Clinical Terminology UK coding system which represents the type of section.",
+                    "valueSetUri": "http://snomed.info/sct"
+                }
+            },
+            {
+                "id": "Composition.section:patientDemographics.code.coding",
+                "path": "Composition.section.code.coding",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:patientDemographics.code.coding.system",
+                "path": "Composition.section.code.coding.system",
+                "min": 1,
+                "fixedUri": "http://snomed.info/sct"
+            },
+            {
+                "id": "Composition.section:patientDemographics.code.coding.version",
+                "path": "Composition.section.code.coding.version",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:patientDemographics.code.coding.code",
+                "path": "Composition.section.code.coding.code",
+                "min": 1,
+                "fixedCode": "886731000000109"
+            },
+            {
+                "id": "Composition.section:patientDemographics.code.coding.display",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.coding.display",
+                "min": 1,
+                "fixedString": "Patient demographics"
+            },
+            {
+                "id": "Composition.section:patientDemographics.code.coding.userSelected",
+                "path": "Composition.section.code.coding.userSelected",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:patientDemographics.code.text",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.text",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:patientDemographics.text",
+                "path": "Composition.section.text",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:patientDemographics.mode",
+                "path": "Composition.section.mode",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:patientDemographics.orderedBy",
+                "path": "Composition.section.orderedBy",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:patientDemographics.entry",
+                "path": "Composition.section.entry",
+                "min": 1,
+                "max": "1",
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1"
+                    }
+                ]
+            },
+            {
+                "id": "Composition.section:patientDemographics.entry.reference",
+                "path": "Composition.section.entry.reference",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:patientDemographics.emptyReason",
+                "path": "Composition.section.emptyReason",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:patientDemographics.section",
+                "path": "Composition.section.section",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:planAndRequestedActions",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name",
+                        "valueString": "Section"
+                    }
+                ],
+                "path": "Composition.section",
+                "sliceName": "planAndRequestedActions",
+                "max": "1",
+                "mustSupport": true
+            },
+            {
+                "id": "Composition.section:planAndRequestedActions.title",
+                "path": "Composition.section.title",
+                "min": 1,
+                "fixedString": "Plan and requested actions"
+            },
+            {
+                "id": "Composition.section:planAndRequestedActions.code",
+                "path": "Composition.section.code",
+                "min": 1,
+                "binding": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+                            "valueString": "CompositionSectionType"
+                        }
+                    ],
+                    "strength": "required",
+                    "description": "A code from the SNOMED Clinical Terminology UK coding system which represents the type of section.",
+                    "valueSetUri": "http://snomed.info/sct"
+                }
+            },
+            {
+                "id": "Composition.section:planAndRequestedActions.code.coding",
+                "path": "Composition.section.code.coding",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:planAndRequestedActions.code.coding.system",
+                "path": "Composition.section.code.coding.system",
+                "min": 1,
+                "fixedUri": "http://snomed.info/sct"
+            },
+            {
+                "id": "Composition.section:planAndRequestedActions.code.coding.version",
+                "path": "Composition.section.code.coding.version",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:planAndRequestedActions.code.coding.code",
+                "path": "Composition.section.code.coding.code",
+                "min": 1,
+                "fixedCode": "887201000000105"
+            },
+            {
+                "id": "Composition.section:planAndRequestedActions.code.coding.display",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.coding.display",
+                "min": 1,
+                "fixedString": "Plan and requested actions"
+            },
+            {
+                "id": "Composition.section:planAndRequestedActions.code.coding.userSelected",
+                "path": "Composition.section.code.coding.userSelected",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:planAndRequestedActions.code.text",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.text",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:planAndRequestedActions.text",
+                "path": "Composition.section.text",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:planAndRequestedActions.mode",
+                "path": "Composition.section.mode",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:planAndRequestedActions.orderedBy",
+                "path": "Composition.section.orderedBy",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:planAndRequestedActions.entry",
+                "path": "Composition.section.entry",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:planAndRequestedActions.emptyReason",
+                "path": "Composition.section.emptyReason",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:planAndRequestedActions.section",
+                "path": "Composition.section.section",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:presentingComplaintOrIssues",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name",
+                        "valueString": "Section"
+                    }
+                ],
+                "path": "Composition.section",
+                "sliceName": "presentingComplaintOrIssues",
+                "short": "The health problem or issue experienced by the patient resulting in their attendance.",
+                "definition": "The health problem or issue experienced by the patient resulting in their attendance."
+            },
+            {
+                "id": "Composition.section:presentingComplaintOrIssues.title",
+                "path": "Composition.section.title",
+                "min": 1,
+                "fixedString": "Presentin complaint or issues"
+            },
+            {
+                "id": "Composition.section:presentingComplaintOrIssues.code",
+                "path": "Composition.section.code",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:presentingComplaintOrIssues.code.coding",
+                "path": "Composition.section.code.coding",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:presentingComplaintOrIssues.code.coding.system",
+                "path": "Composition.section.code.coding.system",
+                "min": 1,
+                "fixedUri": "http://snomed.info/sct"
+            },
+            {
+                "id": "Composition.section:presentingComplaintOrIssues.code.coding.version",
+                "path": "Composition.section.code.coding.version",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:presentingComplaintOrIssues.code.coding.code",
+                "path": "Composition.section.code.coding.code",
+                "min": 1,
+                "fixedCode": "886891000000102"
+            },
+            {
+                "id": "Composition.section:presentingComplaintOrIssues.code.coding.display",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.coding.display",
+                "min": 1,
+                "fixedString": "Presenting complaints or issues"
+            },
+            {
+                "id": "Composition.section:presentingComplaintOrIssues.code.coding.userSelected",
+                "path": "Composition.section.code.coding.userSelected",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:presentingComplaintOrIssues.code.text",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.text",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:presentingComplaintOrIssues.text",
+                "path": "Composition.section.text",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:presentingComplaintOrIssues.mode",
+                "path": "Composition.section.mode",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:presentingComplaintOrIssues.orderedBy",
+                "path": "Composition.section.orderedBy",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:presentingComplaintOrIssues.entry",
+                "path": "Composition.section.entry",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:presentingComplaintOrIssues.emptyReason",
+                "path": "Composition.section.emptyReason",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:presentingComplaintOrIssues.section",
+                "path": "Composition.section.section",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:referralDetails",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name",
+                        "valueString": "Section"
+                    }
+                ],
+                "path": "Composition.section",
+                "sliceName": "referralDetails",
+                "short": "Details of the individual or team who referred the patient.",
+                "definition": "Details of the individual or team who referred the patient.",
+                "max": "1",
+                "mustSupport": true
+            },
+            {
+                "id": "Composition.section:referralDetails.title",
+                "path": "Composition.section.title",
+                "short": "Referral Details",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:referralDetails.code",
+                "path": "Composition.section.code",
+                "min": 1,
+                "binding": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+                            "valueString": "CompositionSectionType"
+                        }
+                    ],
+                    "strength": "required",
+                    "description": "A code from the SNOMED Clinical Terminology UK coding system which represents the type of section.",
+                    "valueSetUri": "http://snomed.info/sct"
+                }
+            },
+            {
+                "id": "Composition.section:referralDetails.code.coding",
+                "path": "Composition.section.code.coding",
+                "min": 1,
+                "max": "1"
+            },
+            {
+                "id": "Composition.section:referralDetails.code.coding.system",
+                "path": "Composition.section.code.coding.system",
+                "min": 1,
+                "fixedUri": "http://snomed.info/sct"
+            },
+            {
+                "id": "Composition.section:referralDetails.code.coding.version",
+                "path": "Composition.section.code.coding.version",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:referralDetails.code.coding.code",
+                "path": "Composition.section.code.coding.code",
+                "min": 1,
+                "fixedCode": "886721000000107"
+            },
+            {
+                "id": "Composition.section:referralDetails.code.coding.display",
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+                        "valueBoolean": true
+                    }
+                ],
+                "path": "Composition.section.code.coding.display",
+                "min": 1,
+                "fixedString": "Referral details"
+            },
+            {
+                "id": "Composition.section:referralDetails.code.coding.userSelected",
+                "path": "Composition.section.code.coding.userSelected",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:referralDetails.text",
+                "path": "Composition.section.text",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:referralDetails.mode",
+                "path": "Composition.section.mode",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:referralDetails.orderedBy",
+                "path": "Composition.section.orderedBy",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:referralDetails.entry",
+                "path": "Composition.section.entry",
+                "max": "0",
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Practitioner-1"
+                    },
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1"
+                    },
+                    {
+                        "code": "Reference",
+                        "targetProfile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-PractitionerRole-1"
+                    }
+                ]
+            },
+            {
+                "id": "Composition.section:referralDetails.entry.reference",
+                "path": "Composition.section.entry.reference",
+                "min": 1
+            },
+            {
+                "id": "Composition.section:referralDetails.emptyReason",
+                "path": "Composition.section.emptyReason",
+                "max": "0"
+            },
+            {
+                "id": "Composition.section:referralDetails.section",
+                "path": "Composition.section.section",
+                "max": "0"
+            }
+        ]
+    }
+}
