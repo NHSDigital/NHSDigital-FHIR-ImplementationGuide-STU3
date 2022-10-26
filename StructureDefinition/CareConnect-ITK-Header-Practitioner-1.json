@@ -1,0 +1,198 @@
+{
+    "resourceType": "StructureDefinition",
+    "id": "CareConnect-ITK-Header-Practitioner-1",
+    "meta": {
+      "lastUpdated": "2018-08-17T12:12:45.092+01:00"
+    },
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+        "valueCode": "pa"
+      }
+    ],
+    "url": "https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-ITK-Header-Practitioner-1",
+    "version": "1.2.0",
+    "name": "CareConnect-ITK-Header-Practitioner-1",
+    "status": "active",
+    "date": "2019-01-15",
+    "publisher": "NHS Digital",
+    "contact": [
+      {
+        "name": "Interoperability Team",
+        "telecom": [
+          {
+            "system": "email",
+            "value": "interoperabilityteam@nhs.net",
+            "use": "work"
+          }
+        ]
+      }
+    ],
+    "description": "This profile carries details of the practitioner for which the information in the payload should be directed to.",
+    "copyright": "Copyright © 2018 NHS Digital",
+    "fhirVersion": "3.0.1",
+    "kind": "resource",
+    "abstract": false,
+    "type": "Practitioner",
+    "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Practitioner",
+    "derivation": "constraint",
+    "differential": {
+      "element": [
+        {
+          "id": "Practitioner",
+          "path": "Practitioner",
+          "short": "A person with a formal responsibility in the provisioning of healthcare or related services"
+        },
+        {
+          "id": "Practitioner.extension",
+          "path": "Practitioner.extension",
+          "slicing": {
+            "discriminator": [
+              {
+                "type": "value",
+                "path": "url"
+              }
+            ],
+            "rules": "open"
+          }
+        },
+        {
+          "id": "Practitioner.extension:nhsCommunication",
+          "path": "Practitioner.extension",
+          "sliceName": "nhsCommunication",
+          "short": "NHS communication preferences for a resource",
+          "definition": "Communication preferences including a list of Languages which may be used for communication",
+          "max": "0",
+          "type": [
+            {
+              "code": "Extension",
+              "profile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/Extension-CareConnect-NHSCommunication-1"
+            }
+          ]
+        },
+        {
+          "id": "Practitioner.extension:nhsCommunication.url",
+          "path": "Practitioner.extension.url",
+          "fixedUri": "https://fhir.hl7.org.uk/STU3/StructureDefinition/Extension-CareConnect-NHSCommunication-1"
+        },
+        {
+          "id": "Practitioner.identifier",
+          "path": "Practitioner.identifier",
+          "slicing": {
+            "discriminator": [
+              {
+                "type": "value",
+                "path": "system"
+              }
+            ],
+            "ordered": false,
+            "rules": "openAtEnd"
+          }
+        },
+        {
+          "id": "Practitioner.identifier:sdsUserID",
+          "path": "Practitioner.identifier",
+          "sliceName": "sdsUserID",
+          "short": "The SDS identifier that uniquely identifies the person",
+          "definition": "The SDS identifier that uniquely identifies the person.",
+          "max": "1"
+        },
+        {
+          "id": "Practitioner.identifier:sdsUserID.system",
+          "path": "Practitioner.identifier.system",
+          "min": 1,
+          "fixedUri": "https://fhir.nhs.uk/Id/sds-user-id"
+        },
+        {
+          "id": "Practitioner.identifier:sdsUserID.value",
+          "path": "Practitioner.identifier.value",
+          "min": 1
+        },
+        {
+          "id": "Practitioner.identifier:sdsRoleProfileID",
+          "path": "Practitioner.identifier",
+          "sliceName": "sdsRoleProfileID",
+          "short": "The SDS identifier that uniquely identifies the role profile of the person",
+          "definition": "The SDS identifier that uniquely identifies the role profile of the person."
+        },
+        {
+          "id": "Practitioner.identifier:sdsRoleProfileID.system",
+          "path": "Practitioner.identifier.system",
+          "min": 1,
+          "fixedUri": "https://fhir.nhs.uk/Id/sds-role-profile-id"
+        },
+        {
+          "id": "Practitioner.identifier:sdsRoleProfileID.value",
+          "path": "Practitioner.identifier.value",
+          "min": 1
+        },
+        {
+          "id": "Practitioner.name",
+          "path": "Practitioner.name",
+          "max": "1"
+        },
+        {
+          "id": "Practitioner.name.text",
+          "path": "Practitioner.name.text",
+          "max": "0"
+        },
+        {
+          "id": "Practitioner.telecom",
+          "path": "Practitioner.telecom",
+          "max": "0"
+        },
+        {
+          "id": "Practitioner.address",
+          "path": "Practitioner.address",
+          "max": "0"
+        },
+        {
+          "id": "Practitioner.address.state",
+          "path": "Practitioner.address.state",
+          "max": "0"
+        },
+        {
+          "id": "Practitioner.gender",
+          "path": "Practitioner.gender",
+          "max": "0",
+          "binding": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+                "valueString": "AdministrativeGender"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding",
+                "valueBoolean": true
+              }
+            ],
+            "strength": "required",
+            "valueSetReference": {
+              "reference": "https://fhir.hl7.org.uk/STU3/ValueSet/CareConnect-AdministrativeGender-1"
+            }
+          }
+        },
+        {
+          "id": "Practitioner.birthDate",
+          "path": "Practitioner.birthDate",
+          "short": "The date on which the practitioner was born",
+          "max": "0"
+        },
+        {
+          "id": "Practitioner.photo",
+          "path": "Practitioner.photo",
+          "max": "0"
+        },
+        {
+          "id": "Practitioner.qualification",
+          "path": "Practitioner.qualification",
+          "max": "0"
+        },
+        {
+          "id": "Practitioner.communication",
+          "path": "Practitioner.communication",
+          "max": "0"
+        }
+      ]
+    }
+  }

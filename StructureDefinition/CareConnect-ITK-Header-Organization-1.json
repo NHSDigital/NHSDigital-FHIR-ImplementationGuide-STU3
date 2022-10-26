@@ -1,0 +1,197 @@
+{
+    "resourceType": "StructureDefinition",
+    "id": "CareConnect-ITK-Header-Organization-1",
+    "meta": {
+      "lastUpdated": "2018-08-17T12:13:02.901+01:00"
+    },
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+        "valueCode": "pa"
+      }
+    ],
+    "url": "https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-ITK-Header-Organization-1",
+    "version": "1.2.0",
+    "name": "CareConnect-ITK-Header-Organization-1",
+    "status": "active",
+    "date": "2019-01-15",
+    "publisher": "NHS Digital",
+    "contact": [
+      {
+        "name": "Interoperability Team",
+        "telecom": [
+          {
+            "system": "email",
+            "value": "interoperabilityteam@nhs.net",
+            "use": "work"
+          }
+        ]
+      }
+    ],
+    "description": "This profile carries details of the Organization for which the information in the payload should be directed to.",
+    "copyright": "Copyright © 2018 NHS Digital",
+    "fhirVersion": "3.0.1",
+    "kind": "resource",
+    "abstract": false,
+    "type": "Organization",
+    "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Organization",
+    "derivation": "constraint",
+    "differential": {
+      "element": [
+        {
+          "id": "Organization.extension",
+          "path": "Organization.extension",
+          "slicing": {
+            "discriminator": [
+              {
+                "type": "value",
+                "path": "url"
+              }
+            ],
+            "rules": "open"
+          }
+        },
+        {
+          "id": "Organization.extension:mainLocation",
+          "path": "Organization.extension",
+          "sliceName": "mainLocation",
+          "max": "0",
+          "type": [
+            {
+              "code": "Extension",
+              "profile": "https://fhir.hl7.org.uk/STU3/StructureDefinition/Extension-CareConnect-MainLocation-1"
+            }
+          ]
+        },
+        {
+          "id": "Organization.extension:mainLocation.url",
+          "path": "Organization.extension.url",
+          "fixedUri": "https://fhir.hl7.org.uk/STU3/StructureDefinition/Extension-CareConnect-MainLocation-1"
+        },
+        {
+          "id": "Organization.extension:organization-period",
+          "path": "Organization.extension",
+          "sliceName": "organization-period",
+          "max": "0",
+          "type": [
+            {
+              "code": "Extension",
+              "profile": "http://hl7.org/fhir/StructureDefinition/organization-period"
+            }
+          ]
+        },
+        {
+          "id": "Organization.identifier",
+          "path": "Organization.identifier",
+          "slicing": {
+            "discriminator": [
+              {
+                "type": "value",
+                "path": "system"
+              }
+            ],
+            "ordered": false,
+            "rules": "openAtEnd"
+          }
+        },
+        {
+          "id": "Organization.identifier:odsOrganisationCode",
+          "path": "Organization.identifier",
+          "sliceName": "odsOrganisationCode",
+          "short": "Organisation Data Service code",
+          "definition": "Identifier code supplier by the Organisation Data Service",
+          "max": "1"
+        },
+        {
+          "id": "Organization.identifier:odsOrganisationCode.system",
+          "path": "Organization.identifier.system",
+          "min": 1,
+          "fixedUri": "https://fhir.nhs.uk/Id/ods-organization-code"
+        },
+        {
+          "id": "Organization.identifier:odsOrganisationCode.value",
+          "path": "Organization.identifier.value",
+          "min": 1
+        },
+        {
+          "id": "Organization.identifier:odsSiteCode",
+          "path": "Organization.identifier",
+          "sliceName": "odsSiteCode",
+          "short": "ODS Site code to identify the organisation at site level",
+          "definition": "ODS Site code to identify the organisation at site level",
+          "max": "1"
+        },
+        {
+          "id": "Organization.identifier:odsSiteCode.system",
+          "path": "Organization.identifier.system",
+          "min": 1,
+          "fixedUri": "https://fhir.nhs.uk/Id/ods-site-code"
+        },
+        {
+          "id": "Organization.identifier:odsSiteCode.value",
+          "path": "Organization.identifier.value",
+          "min": 1
+        },
+        {
+          "id": "Organization.active",
+          "path": "Organization.active",
+          "max": "0"
+        },
+        {
+          "id": "Organization.type",
+          "path": "Organization.type",
+          "max": "0"
+        },
+        {
+          "id": "Organization.name",
+          "path": "Organization.name",
+          "max": "0"
+        },
+        {
+          "id": "Organization.alias",
+          "path": "Organization.alias",
+          "max": "0"
+        },
+        {
+          "id": "Organization.telecom",
+          "path": "Organization.telecom",
+          "max": "0"
+        },
+        {
+          "id": "Organization.address",
+          "path": "Organization.address",
+          "max": "0"
+        },
+        {
+          "id": "Organization.address.state",
+          "path": "Organization.address.state",
+          "max": "0"
+        },
+        {
+          "id": "Organization.partOf",
+          "path": "Organization.partOf",
+          "max": "0"
+        },
+        {
+          "id": "Organization.contact",
+          "path": "Organization.contact",
+          "max": "0"
+        },
+        {
+          "id": "Organization.contact.name.family",
+          "path": "Organization.contact.name.family",
+          "min": 1
+        },
+        {
+          "id": "Organization.contact.address.state",
+          "path": "Organization.contact.address.state",
+          "max": "0"
+        },
+        {
+          "id": "Organization.endpoint",
+          "path": "Organization.endpoint",
+          "max": "0"
+        }
+      ]
+    }
+  }

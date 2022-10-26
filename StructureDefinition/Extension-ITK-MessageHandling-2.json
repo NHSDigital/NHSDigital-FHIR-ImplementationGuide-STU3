@@ -1,0 +1,268 @@
+{
+    "resourceType": "StructureDefinition",
+    "id": "Extension-ITK-MessageHandling-2",
+    "meta": {
+      "lastUpdated": "2018-08-20T14:06:23.998+01:00"
+    },
+    "url": "https://fhir.nhs.uk/STU3/StructureDefinition/Extension-ITK-MessageHandling-2",
+    "version": "2.1.0",
+    "name": "Extension-ITK-MessageHandling-2",
+    "status": "active",
+    "date": "2018-08-20",
+    "publisher": "NHS Digital",
+    "contact": [
+      {
+        "name": "Interoperability Team",
+        "telecom": [
+          {
+            "system": "email",
+            "value": "interoperabilityteam@nhs.net",
+            "use": "work"
+          }
+        ]
+      }
+    ],
+    "description": "This is an extension to support the ITK handling specification. This provides the ability to control the sending of acknowledgements and other values such as profile ID and interaction ID.",
+    "purpose": "This extension provides the ability to control the sending of acknowledgements and other values such as profile ID and interaction ID.",
+    "copyright": "Copyright ©2018 NHS Digital",
+    "fhirVersion": "3.0.1",
+    "kind": "complex-type",
+    "abstract": false,
+    "contextType": "resource",
+    "context": [
+      "MessageHeader"
+    ],
+    "type": "Extension",
+    "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+    "derivation": "constraint",
+    "differential": {
+      "element": [
+        {
+          "id": "Extension",
+          "path": "Extension",
+          "short": "An extension to support ITK message handling"
+        },
+        {
+          "id": "Extension.extension",
+          "path": "Extension.extension",
+          "slicing": {
+            "discriminator": [
+              {
+                "type": "value",
+                "path": "url"
+              }
+            ],
+            "rules": "open"
+          }
+        },
+        {
+          "id": "Extension.extension:BusAckRequested",
+          "path": "Extension.extension",
+          "sliceName": "BusAckRequested",
+          "short": "Populated when sender requires a business level response to be returned.",
+          "min": 1,
+          "max": "1"
+        },
+        {
+          "id": "Extension.extension:BusAckRequested.url",
+          "path": "Extension.extension.url",
+          "fixedUri": "BusAckRequested"
+        },
+        {
+          "id": "Extension.extension:BusAckRequested.valueBoolean:valueBoolean",
+          "path": "Extension.extension.valueBoolean",
+          "sliceName": "valueBoolean",
+          "min": 1,
+          "type": [
+            {
+              "code": "boolean"
+            }
+          ]
+        },
+        {
+          "id": "Extension.extension:InfAckRequested",
+          "path": "Extension.extension",
+          "sliceName": "InfAckRequested",
+          "short": "Populated when sender requires an infrastructure level response to be returned.",
+          "min": 1,
+          "max": "1"
+        },
+        {
+          "id": "Extension.extension:InfAckRequested.url",
+          "path": "Extension.extension.url",
+          "fixedUri": "InfAckRequested"
+        },
+        {
+          "id": "Extension.extension:InfAckRequested.valueBoolean:valueBoolean",
+          "path": "Extension.extension.valueBoolean",
+          "sliceName": "valueBoolean",
+          "min": 1,
+          "type": [
+            {
+              "code": "boolean"
+            }
+          ]
+        },
+        {
+          "id": "Extension.extension:RecipientType",
+          "path": "Extension.extension",
+          "sliceName": "RecipientType",
+          "short": "Indicates the type of recipient.",
+          "min": 1,
+          "max": "1"
+        },
+        {
+          "id": "Extension.extension:RecipientType.url",
+          "path": "Extension.extension.url",
+          "fixedUri": "RecipientType"
+        },
+        {
+          "id": "Extension.extension:RecipientType.valueCoding:valueCoding",
+          "path": "Extension.extension.valueCoding",
+          "sliceName": "valueCoding",
+          "min": 1,
+          "type": [
+            {
+              "code": "Coding"
+            }
+          ],
+          "binding": {
+            "strength": "required",
+            "description": "A set of codes to describe if the recipient has been sent the payload for action or for information.",
+            "valueSetReference": {
+              "reference": "https://fhir.nhs.uk/STU3/ValueSet/ITK-RecipientType-1"
+            }
+          }
+        },
+        {
+          "id": "Extension.extension:RecipientType.valueCoding:valueCoding.system",
+          "path": "Extension.extension.valueCoding.system",
+          "min": 1,
+          "fixedUri": "https://fhir.nhs.uk/STU3/CodeSystem/ITK-RecipientType-1"
+        },
+        {
+          "id": "Extension.extension:RecipientType.valueCoding:valueCoding.version",
+          "path": "Extension.extension.valueCoding.version",
+          "max": "0"
+        },
+        {
+          "id": "Extension.extension:RecipientType.valueCoding:valueCoding.code",
+          "path": "Extension.extension.valueCoding.code",
+          "min": 1
+        },
+        {
+          "id": "Extension.extension:RecipientType.valueCoding:valueCoding.display",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+              "valueBoolean": true
+            }
+          ],
+          "path": "Extension.extension.valueCoding.display",
+          "min": 1
+        },
+        {
+          "id": "Extension.extension:RecipientType.valueCoding:valueCoding.userSelected",
+          "path": "Extension.extension.valueCoding.userSelected",
+          "max": "0"
+        },
+        {
+          "id": "Extension.extension:MessageDefinition",
+          "path": "Extension.extension",
+          "sliceName": "MessageDefinition",
+          "short": "A reference to a URL for the MessageDefinition for the payload, which can be any message definition instance which conforms to the ITK message definition profile.   This MessageDefinition will detail the information to allow correct processing of the payload, such as profiles used, message event type, profiles used, responses allowed/ required etc..",
+          "min": 1,
+          "max": "1"
+        },
+        {
+          "id": "Extension.extension:MessageDefinition.url",
+          "path": "Extension.extension.url",
+          "fixedUri": "MessageDefinition"
+        },
+        {
+          "id": "Extension.extension:MessageDefinition.valueReference:valueReference",
+          "path": "Extension.extension.valueReference",
+          "sliceName": "valueReference",
+          "min": 1,
+          "type": [
+            {
+              "code": "Reference"
+            }
+          ]
+        },
+        {
+          "id": "Extension.extension:MessageDefinition.valueReference:valueReference.reference",
+          "path": "Extension.extension.valueReference.reference",
+          "min": 1
+        },
+        {
+          "id": "Extension.extension:MessageDefinition.valueReference:valueReference.identifier",
+          "path": "Extension.extension.valueReference.identifier",
+          "max": "0"
+        },
+        {
+          "id": "Extension.extension:MessageDefinition.valueReference:valueReference.display",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+              "valueBoolean": true
+            }
+          ],
+          "path": "Extension.extension.valueReference.display",
+          "max": "0"
+        },
+        {
+          "id": "Extension.extension:SenderReference",
+          "path": "Extension.extension",
+          "sliceName": "SenderReference",
+          "short": "A reference that the sender includes and wants returned in any response. ",
+          "min": 1,
+          "max": "1"
+        },
+        {
+          "id": "Extension.extension:SenderReference.url",
+          "path": "Extension.extension.url",
+          "fixedUri": "SenderReference"
+        },
+        {
+          "id": "Extension.extension:SenderReference.valueString:valueString",
+          "path": "Extension.extension.valueString",
+          "sliceName": "valueString",
+          "min": 1,
+          "type": [
+            {
+              "code": "string"
+            }
+          ],
+          "maxLength": 255
+        },
+        {
+          "id": "Extension.extension:LocalExtension",
+          "path": "Extension.extension",
+          "sliceName": "LocalExtension",
+          "min": 1,
+          "max": "1"
+        },
+        {
+          "id": "Extension.extension:LocalExtension.url",
+          "path": "Extension.extension.url",
+          "fixedUri": "LocalExtension"
+        },
+        {
+          "id": "Extension.extension:LocalExtension.value[x]",
+          "path": "Extension.extension.value[x]",
+          "min": 1
+        },
+        {
+          "id": "Extension.url",
+          "path": "Extension.url",
+          "fixedUri": "https://fhir.nhs.uk/STU3/StructureDefinition/Extension-ITK-MessageHandling-2"
+        },
+        {
+          "id": "Extension.value[x]",
+          "path": "Extension.value[x]",
+          "max": "0"
+        }
+      ]
+    }
+  }
